@@ -1,0 +1,68 @@
+#python program to readlines
+def read(filename):
+    with open(filename) as f:
+        content=filename.readlines()
+        print(content)
+read(r"C:\Users\ongc\Documents\p.txt")        
+        
+#python program to calculate number of days
+from datetime import date
+first_date = date(2020,7,2)
+second_date=date(2020,7,11)
+dates=first_date-second_date
+print(dates)
+
+#python program to dict to json
+import json
+dict={'1':'cat','7':'rat','6':'cow','3':'dog'}
+print(dict)
+js=json.dumps(dict,sort_keys=True,indent=4)
+print(js)
+
+#python program to sort dict using lamda
+model={'make':'Nokia', 'model':216, 'color':'Black'}, {'make':'Mi Max', 'model':'2', 'color':'Gold'}, {'make':'Samsung', 'model': 7, 'color':'Blue'}
+print("original dictionary",model)
+sort=sorted(model,key=lambda x: x['color'])
+print("sorted dictionary",sort)       
+
+#program to take file as input
+def count_words(filepath):
+   with open(filepath) as f:
+       data = f.read()
+       data.replace(",", " ")
+       return len(data.split(" "))
+count_words(r"C:\Users\ongc\Documents\p.txt")
+#program to take array and return them as bytes
+from array import array
+a1= array('i',[1,2,3,4,5,6])
+convert=a1.tobytes()
+print(convert)
+#program to generate random logs
+import logging
+import logging.handlers as handlers
+import time
+
+logger = logging.getLogger('my_app')
+logger.setLevel(logging.INFO)
+
+logHandler = handlers.RotatingFileHandler('app.log', maxBytes=500, backupCount=2)
+logHandler.setLevel(logging.INFO)
+logger.addHandler(logHandler)
+
+def main():
+    while True:
+        time.sleep(1)
+        logger.info("A Sample Log Statement")
+
+main()
+#program to find ip is active
+import subprocess
+import os
+
+with open(r'C:\Users\ongc\Documents\p.txt') as f:
+    for ip in f:
+        result=subprocess.Popen(["ping", "-c", "1", "-n", "-W", "2",    ip],stdout=f, stderr=f).wait()
+        if result:
+            print(ip, "inactive")
+        else:
+            print(ip, "active")
